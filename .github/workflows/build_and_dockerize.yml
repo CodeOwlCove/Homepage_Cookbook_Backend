@@ -30,7 +30,7 @@ jobs:
       with:
         go-version: 1.17
     - name: Run build with Go
-      run: go build -tags prod -o main .
+      run: go build -tags prod -o main ./src/main
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag homepage_backend_app:$(date +%s)
 
