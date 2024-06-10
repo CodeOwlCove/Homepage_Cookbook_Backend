@@ -18,7 +18,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN go build -tags prod -o main .
+RUN go build -tags prod -o main ./src/main
 
 # Expose port 8085 to the outside world
 EXPOSE 8085
