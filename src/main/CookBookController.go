@@ -114,12 +114,11 @@ func ping(w http.ResponseWriter, r *http.Request) {
 }
 
 func writeRecipe(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Writing recipe...")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
-
-	fmt.Println("Writing recipe...")
 
 	var recipe Recipe
 	err := json.NewDecoder(r.Body).Decode(&recipe)
@@ -168,6 +167,8 @@ func writeRecipe(w http.ResponseWriter, r *http.Request) {
  * It can search for a recipe by ID, title, or tags.
  */
 func getRecipe(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Getting recipe...")
+
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
@@ -207,6 +208,8 @@ func getRecipe(w http.ResponseWriter, r *http.Request) {
 func AddLike(w http.ResponseWriter, r *http.Request) {
 	var err error
 
+	fmt.Println("Adding like...")
+
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
@@ -227,6 +230,8 @@ func AddLike(w http.ResponseWriter, r *http.Request) {
 
 func RemoveLike(w http.ResponseWriter, r *http.Request) {
 	var err error
+
+	fmt.Println("Removing like...")
 
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -249,6 +254,8 @@ func RemoveLike(w http.ResponseWriter, r *http.Request) {
 
 func deleteRecipeById(w http.ResponseWriter, r *http.Request) {
 	var err error
+
+	fmt.Println("Deleting recipe...")
 
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -275,6 +282,8 @@ func getRecipesById(id int) ([]Recipe, error) {
 	var recipeList []Recipe
 	var err error
 
+	fmt.Println("Getting recipe by id...")
+
 	var queryString = "SELECT * FROM recipes WHERE id = ?"
 	var row = db.QueryRow(queryString, id)
 
@@ -298,6 +307,8 @@ func getRecipesById(id int) ([]Recipe, error) {
 func getRecipesByTitle(title string) ([]Recipe, error) {
 	var recipeList []Recipe
 	var err error
+
+	fmt.Println("Getting recipe by title...")
 
 	var queryString = "SELECT * FROM recipes WHERE title LIKE ?"
 	var rows, _ = db.Query(queryString, "%"+title+"%")
@@ -323,6 +334,8 @@ func getRecipesByTitle(title string) ([]Recipe, error) {
 
 func collectTagsAndIngredients(recipeList []Recipe) ([]Recipe, error) {
 	var err error
+
+	fmt.Println("Collecting tags and ingredients...")
 
 	for i := range recipeList {
 		// Get the tags for each recipe
@@ -356,6 +369,8 @@ func collectTagsAndIngredients(recipeList []Recipe) ([]Recipe, error) {
 func getTags(tags []string) ([]Tag, error) {
 	// Convert the tags slice to a comma-separated string
 	tagsString := strings.Join(tags, "','")
+
+	fmt.Println("Getting tags...")
 
 	// Prepare the SQL query
 	queryString := fmt.Sprintf(`SELECT * FROM tags WHERE tag IN ('%s')`, tagsString)
@@ -394,6 +409,8 @@ func getTags(tags []string) ([]Tag, error) {
 func getRecipeByTags(tags []string) ([]Recipe, error) {
 	var recipeList []Recipe
 	var err error
+
+	fmt.Println("Getting recipe by tags...")
 
 	var foundTags, _ = getTags(tags)
 	var sqlString = "SELECT * FROM tags WHERE tag = ?"

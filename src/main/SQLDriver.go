@@ -17,6 +17,7 @@ func initDBDriver() {
 	var err error
 	db, err = sql.Open("mysql", connectionString)
 	if err != nil {
+		fmt.Println("Error while connecting to database!")
 		panic(err.Error())
 	}
 }
