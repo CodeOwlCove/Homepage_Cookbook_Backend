@@ -11,3 +11,14 @@ var (
 	DB_PORT      = "3306"
 	BACKEND_PORT = "8085"
 )
+
+/*
+var (
+	DB_USER      = "backend_db_client"
+	DB_PASS      = "proneraggedyplanetgallows"
+	DB_NAME      = "cookbook"
+	DB_HOST      = "5.75.136.90"
+	DB_PORT      = "3307"
+	BACKEND_PORT = "8085"
+)
+*/

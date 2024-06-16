@@ -82,10 +82,17 @@ func getAllRecipes(w http.ResponseWriter, r *http.Request) {
 	var queryString = "SELECT * FROM recipes"
 	var rows, _ = db.Query(queryString)
 
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer rows.Close()
+
 	for rows.Next() {
 		var recipe Recipe
 		err = rows.Scan(&recipe.Id, &recipe.Title, &recipe.Instructions, &recipe.Likes, &recipe.CreatorName)
 		if err != nil {
+			fmt.Println(err)
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}

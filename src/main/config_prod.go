@@ -11,7 +11,7 @@ var (
 	DB_USER      = getEnv("MYSQL_DB_USERNAME", "backend_db_client")
 	DB_PASS      = getEnv("MYSQL_DB_PASSWORD", "proneraggedyplanetgallows")
 	DB_NAME      = getEnv("MYSQL_DATABASE", "cookbook")
-	DB_HOST      = getEnv("MQSQL_HOST", "cookbookDB")
+	DB_HOST      = getEnv("MYSQL_HOST", "cookbookDB")
 	BACKEND_PORT = getEnv("BACKEND_PORT", "8085")
 	DB_PORT      = getEnv("MYSQL_DB_PORT", "3307")
 )
