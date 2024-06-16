@@ -250,7 +250,7 @@ func RemoveLike(w http.ResponseWriter, r *http.Request) {
 func deleteRecipeById(w http.ResponseWriter, r *http.Request) {
 	var err error
 
-	if r.Method != http.MethodDelete {
+	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
