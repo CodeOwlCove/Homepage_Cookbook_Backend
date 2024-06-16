@@ -3,6 +3,7 @@
 
 package main
 
+/*
 var (
 	DB_USER      = "db_user_2"
 	DB_PASS      = "9L/WbqdbC5wZs1Ay"
@@ -11,8 +12,8 @@ var (
 	DB_PORT      = "3306"
 	BACKEND_PORT = "8085"
 )
+*/
 
-/*
 var (
 	DB_USER      = "backend_db_client"
 	DB_PASS      = "proneraggedyplanetgallows"
@@ -21,4 +22,3 @@ var (
 	DB_PORT      = "3307"
 	BACKEND_PORT = "8085"
 )
-*/
