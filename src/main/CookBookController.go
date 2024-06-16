@@ -45,7 +45,7 @@ func initCookBookController() {
 	mux.HandleFunc("/deleteRecipeById", deleteRecipeById)
 
 	fmt.Println("CookBookController initialized. Listening on port 8085...")
-	err := http.ListenAndServe(BACKEND_PORT, corsMiddleware(mux))
+	err := http.ListenAndServe(":"+BACKEND_PORT, corsMiddleware(mux))
 	if err != nil {
 		panic(err)
 	}
